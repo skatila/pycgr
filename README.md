@@ -5,7 +5,7 @@
 Thus, here comes `chaos game`, first described by [Fractal modeling of real world images, Barnsly, 1988](https://doi.org/10.1007/978-1-4612-3784-6_5) and presented as a novel method, `Chaos Game Representation`, to present DNA structure, [Chaos game representation of gene structure, H.Joel Jeffrey, 1990](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC330698/?tool=pmcentrez&report=abstract)
 
 
-This is a pythonic implementation of cgr using biopython and matplotlib, to generate a cgr image of DNA fasta file.
+This is a pythonic implementation (alpha stage) of cgr using biopython and matplotlib, to generate a cgr image of DNA fasta file.
 
 Ability to compare two different cgr will eventually be added.
 
@@ -121,7 +121,7 @@ optional arguments:
 
 
 ## Sample CGR Images <a name="sample"></a>
-![CGR of HIV Genome](./data/NC_0018021-Human-immunodeficiency-virus-1-complete-genome.png)
+![CGR of HIV Genome](./data/cgr/HIV-complete.png)
 
 ## TODO <a name="todo"></a>
 

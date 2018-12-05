@@ -137,14 +137,14 @@ def get_args():
 		"-p",
 		action='store_true',
 		default=False,
-		help="Do you want to display resulting CGRs?"
+		help="Do you want to display resulting CGRs? Default is to do nothing"
 	)
 	parser.add_argument(
 		"--save",
 		"-s",
 		action='store_true',
 		default=False,
-		help="Do you want to save resulting CGRs?"
+		help="Do you want to save resulting CGRs? Default is /var/tmp/ and is NOT to save"
 	)
 	parser.add_argument(
 		"--dpi",

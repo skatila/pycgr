@@ -130,7 +130,7 @@ def get_args():
 		dest="save_dir",
 		action='store',
 		default="/var/tmp",
-		help="Where do you want to save the resulting CGRs?"
+		help="Where do you want to save the resulting CGRs? /var/tmp"
 	)
 	parser.add_argument(
 		"--show",
@@ -144,7 +144,7 @@ def get_args():
 		"-s",
 		action='store_true',
 		default=False,
-		help="Do you want to save resulting CGRs? Default is /var/tmp/ and is NOT to save"
+		help="Do you want to save resulting CGRs? Default is not to save"
 	)
 	parser.add_argument(
 		"--dpi",
@@ -153,7 +153,7 @@ def get_args():
 		action='store',
 		type=int,
 		default=300,
-		help="Where do you want to save the resulting CGRs?"
+		help="dpi for generated image; default is 300"
 	)
 	parser.add_argument('files', nargs='*')
 	args = parser.parse_args()
@@ -174,10 +174,10 @@ def get_args():
 if __name__ == '__main__':
 	fig_id = 1
 	args = get_args()
+	my_plots = [] # new plot
+	mycgr = []	# hold new cgrs; pointless for now
 	for i in args.files:
 		fasta_seq = fasta_reader(i)
-		mycgr = []
-		my_plots = []
 		for name, seq in fasta_seq:
 			cgr = mk_cgr(seq)
 			# TODO:Add facility to write cgr to file

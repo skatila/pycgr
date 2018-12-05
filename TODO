@@ -1,1 +1,2 @@
-Make CGRs for different RNA, DNA viruses and do a side by side
+* Make CGRs for different RNA, DNA viruses and do a side by side
+* CGR images are being combined using montage (of imagemagick) - either matplotlib's subplots or see about using seaborn as wrapper

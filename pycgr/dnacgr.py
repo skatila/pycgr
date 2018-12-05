@@ -24,16 +24,16 @@ CGR_C = (CGR_X_MIN, CGR_Y_MAX)
 CGR_CENTER = ((CGR_X_MAX - CGR_Y_MIN) / 2, (CGR_Y_MAX - CGR_Y_MIN) / 2)
 # Add color code for each element
 CGR_DICT = {
-	'A': CGR_A,
-	'T': CGR_T,
-	'G': CGR_G,
-	'C': CGR_C,
-	'U': CGR_T,
-	'a': CGR_A,
-	't': CGR_T,
-	'g': CGR_G,
-	'c': CGR_G,
-	'u': CGR_T
+	'A': CGR_A, # Adenine
+	'T': CGR_T, # Thymine
+	'G': CGR_G, # Guanine
+	'C': CGR_C, # Cytosine
+	'U': CGR_T, # Uracil demethylated form of thymine
+	'a': CGR_A, # Adenine
+	't': CGR_T, # Thymine
+	'g': CGR_G, # Guanine
+	'c': CGR_G, # Cytosine
+	'u': CGR_T  # Uracil/Thymine
 }
 
 

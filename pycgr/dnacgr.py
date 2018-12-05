@@ -32,7 +32,7 @@ CGR_DICT = {
 	'a': CGR_A, # Adenine
 	't': CGR_T, # Thymine
 	'g': CGR_G, # Guanine
-	'c': CGR_G, # Cytosine
+	'c': CGR_C, # Cytosine
 	'u': CGR_T  # Uracil/Thymine
 }
 

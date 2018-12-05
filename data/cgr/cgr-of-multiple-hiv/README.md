@@ -1,4 +1,4 @@
-# See ../HIV-complete.fasta for the fasta file
+# See ../HIV-multiple.fasta for the fasta file
 ![AY3044961-HIV-1-isolate-99UGA08483-from-Uganda-partial-genome](./png/AY3044961-HIV-1-isolate-99UGA08483-from-Uganda-partial-genome.png)
 ![MF5958541-HIV-2-strain-RH23-8A5-from-Netherlands-partial-genome](./png/MF5958541-HIV-2-strain-RH23-8A5-from-Netherlands-partial-genome.png)
 ![MF5958551-HIV-2-strain-RH23-3B3-from-Netherlands-partial-genome](./png/MF5958551-HIV-2-strain-RH23-3B3-from-Netherlands-partial-genome.png)

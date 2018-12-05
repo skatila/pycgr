@@ -38,7 +38,10 @@ CGR_DICT = {
 
 
 def fasta_reader(fasta):
-	"""Return a generator with sequence description and sequence"""
+	"""Return a generator with sequence description and sequence
+
+	:param fasta: str filename
+	"""
 	# TODO: modify it to be capable of reading genebank etc
 	flist = SeqIO.parse(fasta, "fasta")
 	for i in flist:
@@ -46,7 +49,11 @@ def fasta_reader(fasta):
 
 
 def mk_cgr(seq):
-	"""Generate cgr"""
+	"""Generate cgr
+
+	:param seq: list of nucleotide
+	:return cgr: [['nt', (x, y)]] List[List[Tuple(float, float)]]
+	"""
 	# TODO: Get rid of try/except block - exception catching is in-effecient
 	global CGR_DICT
 	global CGR_CENTER
@@ -67,11 +74,11 @@ def mk_cgr(seq):
 
 
 def mk_plot(cgr, name, figid):
-	"""
-		Plotting the cgr
-		:param cgr [(A, (0.1, 0.1))]
-		:param name str
-		:param figid int
+	"""Plotting the cgr
+		:param cgr: [(A, (0.1, 0.1))]
+		:param name: str
+		:param figid: int
+		:return dict: {'fignum': figid, 'title': name, 'fname': helper.slugify(name)}
 	"""
 	x_axis = [i[1][0] for i in cgr]
 	y_axis = [i[1][1] for i in cgr]
@@ -91,9 +98,9 @@ def mk_plot(cgr, name, figid):
 
 def write_figure(fig, output_dir, dpi=300):
 	"""Write plot to png
-	:param fig  {'fignum':figid, 'title':name, 'fname':helper.slugify(name)}
-	:param dpi int dpi of output
-	:param output_dir str
+	:param fig:  {'fignum':figid, 'title':name, 'fname':helper.slugify(name)}
+	:param dpi: int dpi of output
+	:param output_dir: str
 
 	Usage:
 		figures = [mk_plot(cgr) for cgr in all_cgr]
@@ -115,9 +122,7 @@ def write_figure(fig, output_dir, dpi=300):
 def get_args():
 	"""Get args"""
 	import argparse
-	parser = argparse.ArgumentParser(
-		description="Create Chaos Game Representation"
-	)
+	parser = argparse.ArgumentParser(description="Chaos Game Representation")
 
 	parser.add_argument(
 		"--dest-dir",
@@ -167,8 +172,6 @@ def get_args():
 
 
 if __name__ == '__main__':
-	from pprint import pprint as pp
-	from pprint import pformat as pf
 	fig_id = 1
 	args = get_args()
 	for i in args.files:
@@ -177,7 +180,7 @@ if __name__ == '__main__':
 		my_plots = []
 		for name, seq in fasta_seq:
 			cgr = mk_cgr(seq)
-			#TODO:Add facility to write cgr to file
+			# TODO:Add facility to write cgr to file
 			my_plots.append(mk_plot(cgr, name, fig_id))
 			fig_id += 1
 	if args.save:

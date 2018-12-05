@@ -76,7 +76,7 @@ def mk_plot(cgr, name, figid):
 	x_axis = [i[1][0] for i in cgr]
 	y_axis = [i[1][1] for i in cgr]
 	plt.figure(figid)
-	plt.title("Chaos Game Representation\n" + name)
+	plt.title("Chaos Game Representation\n" + name, wrap=True)
 	# diagonal and vertical cross
 	# plt.plot([x1, x2], [y1, y2])
 	#plt.plot([0.5,0.5], [0,1], 'k-')

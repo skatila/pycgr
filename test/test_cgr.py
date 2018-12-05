@@ -2,7 +2,9 @@ from pycgr.dnacgr import fasta_reader, mk_cgr
 TEST_F = "test.fasta"
 
 FASTAS = [ i for i in fasta_reader(TEST_F)]
-
+# CGR for both lower and upper should be same
+TEST_SEQ_LOWER = "atgatgaaatagagagactttat"
+TEST_SEQ_UPPER = "ATGATGAAATAGAGAGACTTTAT"
 CGR = [(0.25, 0.25),
  (0.625, 0.125),
  (0.8125, 0.5625),
@@ -30,7 +32,10 @@ def test_fasta_reader_1():
 	assert(FASTAS[0][0] == "fasta1")
 
 def test_fasta_reader_2():
-	assert(FASTAS[0][1] == "atgatgaaatagagagactttat")
+	assert(FASTAS[0][1] == TEST_SEQ_LOWER)
 
-def test_cgr():
-	assert([i[1] for i in mk_cgr(FASTAS[0][1])] == CGR)
+def test_cgr_lower():
+	assert([i[1] for i in mk_cgr(TEST_SEQ_LOWER)] == CGR)
+
+def test_cgr_upper():
+	assert([i[1] for i in mk_cgr(TEST_SEQ_UPPER)] == CGR)

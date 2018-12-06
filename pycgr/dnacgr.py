@@ -122,7 +122,10 @@ def write_figure(fig, output_dir, dpi=300):
 def get_args():
 	"""Get args"""
 	import argparse
-	parser = argparse.ArgumentParser(description="Chaos Game Representation")
+	parser = argparse.ArgumentParser(
+		description="Chaos Game Representation",
+		formatter_class=argparse.ArgumentDefaultsHelpFormatter
+	)
 
 	parser.add_argument(
 		"--dest-dir",
@@ -130,21 +133,21 @@ def get_args():
 		dest="save_dir",
 		action='store',
 		default="/var/tmp",
-		help="Where do you want to save the resulting CGRs? /var/tmp"
+		help="Where do you want to save the resulting CGRs?"
 	)
 	parser.add_argument(
 		"--show",
 		"-p",
 		action='store_true',
 		default=False,
-		help="Do you want to display resulting CGRs? Default is to do nothing"
+		help="Do you want to display resulting CGRs?"
 	)
 	parser.add_argument(
 		"--save",
 		"-s",
 		action='store_true',
 		default=False,
-		help="Do you want to save resulting CGRs? Default is not to save"
+		help="Do you want to save resulting CGRs?"
 	)
 	parser.add_argument(
 		"--dpi",
@@ -153,7 +156,7 @@ def get_args():
 		action='store',
 		type=int,
 		default=300,
-		help="dpi for generated image; default is 300"
+		help="dpi for generated image"
 	)
 	parser.add_argument('files', nargs='*')
 	args = parser.parse_args()

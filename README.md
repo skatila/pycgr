@@ -12,7 +12,7 @@ Ability to compare two different cgr will eventually be added.
 Ability to create cgr of anything other then DNA (e.g protein), is not planned for now.
 
 # Table of contents
-1. [Mathematical Description](#math) 
+1. [Mathematical Description](#math)
 2. [Algorithm/Pseudocode](#algorithm)
 3. [Usage](#usage)
 4. [Sample CGR](#sample)
@@ -37,13 +37,12 @@ w	a	 	  b		c		d		  e		  f		  p
 4	0.5		0		0		0.5		0.5		0.5		0.25
 ```
 
-And it's corresponding CGR:
-
-Tweak the p to 0.1, 0.2, 0.3 and 0.5, the new CGR:
+TODO: Corresponding CGR
+TODO: Tweak the p to 0.1, 0.2, 0.3 and 0.5, the new CGR
 
 ## Description of CGR algorithm <a name="algorithm"></a>
 
-For a DNA sequence with 4 nucleotide, A - T/U - G - C, we start with a graph 
+For a DNA sequence with 4 nucleotide, A - T/U - G - C, we start with a graph
 
 ![CGR Layout](./references/cgr-layout.png)
 
@@ -62,10 +61,10 @@ Algorithm to generate CGR:
 		else if start_nt == G: nt_pos (1,1)
 		else if start_nt == C: nt_pos = (0,1)
 		else: Break
-		
-		cgr_mark  = 
+
+		cgr_mark  =
       (
-        (nt_pos[0] + center[0])/2, 
+        (nt_pos[0] + center[0])/2,
         (nt_pos[1] + center[0])/2
         )
 
@@ -80,13 +79,13 @@ Algorithm to generate CGR:
 			else: Break
 
 			cgr_mark = (
-                    (nt_pos[0] + cgr_mark[0])/2, 
+                    (nt_pos[0] + cgr_mark[0])/2,
                     (nt_pos[1] + cgr_mark[1])/2
                   )
                   plot(cgr_mark)
 ```
 
-A plot is derived in linear time (baring the calculation of mid point)	
+A plot is derived in linear time (baring the calculation of mid point)
 
 
 ## Usage <a name="usage"></a>

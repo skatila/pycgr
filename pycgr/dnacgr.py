@@ -3,6 +3,7 @@ Chaos Game Representation
 """
 import sys
 import os
+from collections import defaultdict
 import matplotlib.pyplot as plt
 
 from Bio import SeqIO
@@ -12,7 +13,7 @@ try:
 except ModuleNotFoundError:
 	import helper
 # defining cgr graph
-#CGR_CENTER = (0.5, 0.5)
+# CGR_CENTER = (0.5, 0.5)
 CGR_X_MAX = 1
 CGR_Y_MAX = 1
 CGR_X_MIN = 0
@@ -22,19 +23,34 @@ CGR_T = (CGR_X_MAX, CGR_Y_MIN)
 CGR_G = (CGR_X_MAX, CGR_Y_MAX)
 CGR_C = (CGR_X_MIN, CGR_Y_MAX)
 CGR_CENTER = ((CGR_X_MAX - CGR_Y_MIN) / 2, (CGR_Y_MAX - CGR_Y_MIN) / 2)
+
 # Add color code for each element
-CGR_DICT = {
-	'A': CGR_A,    # Adenine
-	'T': CGR_T,    # Thymine
-	'G': CGR_G,    # Guanine
-	'C': CGR_C,    # Cytosine
-	'U': CGR_T,    # Uracil demethylated form of thymine
-	'a': CGR_A,    # Adenine
-	't': CGR_T,    # Thymine
-	'g': CGR_G,    # Guanine
-	'c': CGR_C,    # Cytosine
-	'u': CGR_T    # Uracil/Thymine
-}
+
+
+def empty_dict():
+	"""
+	None type return vessel for defaultdict
+	:return:
+	"""
+	sys.stderr.write("Bad Nucleotide:  \n")
+	return None
+
+
+CGR_DICT = defaultdict(
+	empty_dict,
+	[
+		('A', CGR_A),  # Adenine
+		('T', CGR_T),  # Thymine
+		('G', CGR_G),  # Guanine
+		('C', CGR_C),  # Cytosine
+		('U', CGR_T),  # Uracil demethylated form of thymine
+		('a', CGR_A),  # Adenine
+		('t', CGR_T),  # Thymine
+		('g', CGR_G),  # Guanine
+		('c', CGR_C),  # Cytosine
+		('u', CGR_T)  # Uracil/Thymine
+		]
+)
 
 
 def fasta_reader(fasta):
@@ -54,22 +70,17 @@ def mk_cgr(seq):
 	:param seq: list of nucleotide
 	:return cgr: [['nt', (x, y)]] List[List[Tuple(float, float)]]
 	"""
-	# TODO: Get rid of try/except block - exception catching is in-effecient
-	global CGR_DICT
-	global CGR_CENTER
 	cgr = []
 	cgr_marker = CGR_CENTER[:
 		]    # The center of square which serves as first marker
 	for s in seq:
-		try:
-			cgr_corner = CGR_DICT[s]
+		cgr_corner = CGR_DICT[s]
+		if cgr_corner:
 			cgr_marker = (
 				(cgr_corner[0] + cgr_marker[0]) / 2,
 				(cgr_corner[1] + cgr_marker[1]) / 2
 			)
 			cgr.append([s, cgr_marker])
-		except KeyError:
-			sys.stderr.write("Bad Nucleotide: " + s + " \n")
 	return cgr
 
 
@@ -86,10 +97,10 @@ def mk_plot(cgr, name, figid):
 	plt.title("Chaos Game Representation\n" + name, wrap=True)
 	# diagonal and vertical cross
 	# plt.plot([x1, x2], [y1, y2])
-	#plt.plot([0.5,0.5], [0,1], 'k-')
+	# plt.plot([0.5,0.5], [0,1], 'k-')
 	plt.plot([CGR_CENTER[0], CGR_CENTER[0]], [0, CGR_Y_MAX], 'k-')
 
-	#plt.plot([0,1], [0.5,0.5], 'k-')
+	# plt.plot([0,1], [0.5,0.5], 'k-')
 	plt.plot([CGR_Y_MIN, CGR_X_MAX], [CGR_CENTER[1], CGR_CENTER[1]], 'k-')
 	plt.scatter(x_axis, y_axis, alpha=0.5, marker='.')
 

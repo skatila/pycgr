@@ -32,7 +32,6 @@ def empty_dict():
 	None type return vessel for defaultdict
 	:return:
 	"""
-	sys.stderr.write("Bad Nucleotide:  \n")
 	return None
 
 
@@ -81,6 +80,9 @@ def mk_cgr(seq):
 				(cgr_corner[1] + cgr_marker[1]) / 2
 			)
 			cgr.append([s, cgr_marker])
+		else:
+			sys.stderr.write("Bad Nucleotide: " + s + " \n")
+
 	return cgr
 
 

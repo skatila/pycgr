@@ -59,4 +59,8 @@ result/
 ignore/
 sst
 
+# custom ignore
 ignore/
+.hypothesis/
+.ipynb_checkpoints/
+.pytest_cache
